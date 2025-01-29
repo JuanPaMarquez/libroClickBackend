@@ -2,13 +2,15 @@ import { Router } from 'express'
 import { 
   crearUsuario, 
   obtenerUsuarioPorId, 
-  verificarUsuario 
+  verificarUsuario,
+  actualizarUsuario
 } from '../controllers/usuarioController'
 
-const router = Router()
+const usuarioRouter = Router()
 
-router.post('/usuario', crearUsuario)
-router.get('/usuario/:id', obtenerUsuarioPorId)
-router.post('/usuario/login', verificarUsuario)
+usuarioRouter.post('/usuario', crearUsuario)
+usuarioRouter.get('/usuario/:id', obtenerUsuarioPorId)
+usuarioRouter.post('/usuario/login', verificarUsuario)
+usuarioRouter.post('/usuario/actualizar', actualizarUsuario)
 
-export default router
+export default usuarioRouter

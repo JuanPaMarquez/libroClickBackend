@@ -7,3 +7,22 @@ export const usuarios = sqliteTable("usuarios", {
   correo: text("correo").notNull(),
   contrasena: text("contrasena").notNull(),
 })
+
+export const libros = sqliteTable("libros", {
+  id: integer("id").primaryKey(),
+  titulo: text("titulo").notNull(),
+  autor: text("autor").notNull(),
+  publicacion: integer("publicacion").notNull(),
+  genero: text("genero").notNull(),
+  resumen: text("resumen").notNull(),
+  portada: text("portada").notNull(),
+  descarga: text("descarga").notNull(),
+})
+
+export const historial = sqliteTable("historial", {
+  idhistorial: integer("idhistorial").primaryKey(),
+  idusuario: integer("idusuario").notNull(),
+  idlibro: integer("idlibro").notNull(),
+  titulo: text("titulo").notNull(),
+  estado: text("estado").notNull(),
+})

@@ -14,12 +14,21 @@ export class UsuarioService {
   }
 
   async obtenerUsuarioPorId(id: number) {
-    return await db.select().from(usuarios).where(eq(usuarios.id, id))
+    return await db.select({
+      nombre: usuarios.nombre,
+      apellido: usuarios.apellido,
+      correo: usuarios.correo,
+    }).from(usuarios).where(eq(usuarios.id, id))
   }
 
   async verificarUsuario(correo: string, contrasena: string) {
     const resultado = await db
-      .select()
+      .select({
+        id: usuarios.id,
+        nombre: usuarios.nombre,
+        apellido: usuarios.apellido,
+        correo: usuarios.correo,
+      })
       .from(usuarios)
       .where(
         and(
@@ -29,6 +38,14 @@ export class UsuarioService {
       )
 
     return resultado.length > 0 ? resultado[0] : null
+  }
+
+  async actualizarUsuario(id: number, nombre: string, apellido: string, contrasena: string) {
+    return await db.update(usuarios).set({
+      nombre,
+      apellido,
+      contrasena
+    }).where(eq(usuarios.id, id))
   }
 }
 

@@ -54,3 +54,19 @@ export const verificarUsuario = async (req: Request, res: Response) => {
   } 
 
 }
+
+export const actualizarUsuario = async (req: Request, res: Response) => {
+  const { id, nombre, apellido, contrasena } = req.body;
+
+  if (!id || !nombre || !apellido || !contrasena) {
+    res.status(400).json({ error: 'Datos faltantes' });
+    return;
+  }
+
+  try {
+    await usuarioService.actualizarUsuario(id, nombre, apellido, contrasena);
+    res.json({ message: 'Usuario actualizado exitosamente' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al actualizar usuario' });
+  }
+}
