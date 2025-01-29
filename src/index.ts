@@ -1,14 +1,13 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import usuarioRouter from "./routers/usuarioRoutes";
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hola desde express con Typescript! 🚀');
-})
+app.use("/api", usuarioRouter);
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-})
+  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+});
