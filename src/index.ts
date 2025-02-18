@@ -8,7 +8,8 @@ const cors = require('cors');
 const PORT = 3000;
 
 const corsOptions = {
-  origin: 'https://libro-click-frontend.vercel.app/', // Reemplaza con el dominio de tu frontend
+  origin: 'https://libro-click-frontend.vercel.app', 
+  // origin: 'http://localhost:3001',
   methods: 'GET,POST',
   allowedHeaders: 'Content-Type'
 };
