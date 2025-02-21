@@ -10,26 +10,19 @@ export class LibroService {
     let query = db
       .select()
       .from(libros)
+      .$dynamic()
       .orderBy(desc(libros.publicacion))
       .limit(limit)
       .offset(offSet);
 
-    let queryDinamic = query.$dynamic();
+    let totalLibrosQuery = db.select({ count: count() }).from(libros).$dynamic();
     
     if (genero) {
-      queryDinamic = queryDinamic.where(eq(libros.genero, genero)).$dynamic();
-    }
-
-    const librosPaginados = await queryDinamic.all();
-
-    console.log(librosPaginados)
-
-    let totalLibrosQuery = db.select({ count: count() }).from(libros).$dynamic();
-
-    if (genero) {
+      query = query.where(eq(libros.genero, genero));
       totalLibrosQuery = totalLibrosQuery.where(eq(libros.genero, genero));
     }
 
+    const librosPaginados = await query.all();
     const totalLibrosResult = await totalLibrosQuery.all();
 
     const totalPages = Math.ceil(totalLibrosResult[0].count / limit);
