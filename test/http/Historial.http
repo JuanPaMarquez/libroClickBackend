@@ -1,0 +1,16 @@
+### * Agregar un libro al historial de un usuario
+POST http://localhost:3000/api/historial
+Content-Type: application/json
+
+{
+  "idusuario": 2,
+  "idlibro": 15,
+  "titulo": "La historia interminable",
+  "estado": "No leido"
+}
+
+### * Obtener el historial de un usuario
+GET http://localhost:3000/api/historial/2
+
+### * Borrar un libro del historial de un usuario por la id de su historial
+DELETE http://localhost:3000/api/historial/5

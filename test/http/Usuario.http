@@ -1,0 +1,33 @@
+### * Obtener usuario por ID
+GET http://localhost:3000/api/usuario/2
+
+### * Guardar usuario
+POST http://localhost:3000/api/usuario
+Content-Type: application/json
+
+{
+  "nombre": "Nohora", 
+  "apellido": "Sanchez", 
+  "correo": "nora@gmail.com", 
+  "contrasena": "123nora" 
+}
+
+### * Verificar usuario
+POST http://localhost:3000/api/usuario/login
+Content-Type: application/json
+
+{
+  "correo": "nora@gmail.com",
+  "contrasena": "123nora"
+}
+
+### * Actualizar usuario
+PUT http://localhost:3000/api/usuario/actualizar
+Content-Type: application/json
+
+{
+  "id": 5,
+  "nombre": "Nohora",
+  "apellido": "Sanchez",
+  "contrasena": "123nora"
+}
