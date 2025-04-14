@@ -10,7 +10,7 @@ const PORT = 3000;
 const corsOptions = {
   origin: 'https://libro-click-frontend.vercel.app', 
   // origin: 'http://localhost:3001',
-  methods: 'GET,POST',
+  methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type'
 };
 
